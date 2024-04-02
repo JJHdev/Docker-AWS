@@ -10,6 +10,42 @@
   3.4 컨테이너 관리
   3.5 리소스 관리
 
+4. docker 실전 연습 (이미지 띄우기) // GUI 환경에서
+  4.1 docker 데스크탑 설치하기, gitBash 설치하기
+  4.2 데스크탑을 설치 후 gitBash킨다.
+  4.3 검색창에서 docker/welcome-to-docker 검색후 실행 >> host Port 입력 후 >> 실행 하면 실제로 이미지를 띄우게 된다.
+
+  4.4 실습 3. 아파치 서버 띄우기 // CLI 환경에서
+      docker run --name apa02 -d -p 8080:80 httpd
+      docker ps
+      localhost:8080 접속
+      docker stop apa02
+      docker rm apa02
+      docker ps -a
+      실습 4. 아파치 서버 여러대 띄우기
+      
+      docker run --name apa03 -d -p 8081:80 httpd
+      docker run --name apa04 -d -p 8082:80 httpd
+      docker run --name apa05 -d -p 8083:80 httpd
+      docker ps
+      localhost:808X 각 포트번호로 접속
+      docker stop 컨테이너이름
+      docker rm 컨테이너이름
+      docker ps -a
+      [자습문제] 실습 5. nginx 접속하기
+      docker run --name nginx01 -d -p 8084:80 nginx
+      docker ps
+      localhost:808X 각 포트번호로 접속
+      docker stop 컨테이너이름
+      docker rm 컨테이너이름
+      docker ps -a
+      실습6. 이미지 삭제
+      컨테이너 삭제 후 진행해야함
+      docker rm 이미지이름 이미지이름 이미지이름
+      docker ps -a
+      docker image ls
+      docker image rm httpd
+
 4. 한정된 개발 기간에 기능에 더 투자할 수 있는데 배포까지 하신 이유가 무엇인가요??
   -. 한정된 개발기간에 기능에 더 투자할 수 있는데 배포까지 하신 이유가 무엇인가요?
         김찬희 10:08 PM
@@ -241,6 +277,3 @@
 6. 프로젝트를 하면서 항상 왜 라는 이유를 찾아야 한다. , 그리고 이 기술 왜 사용하셨어요??
 
 7. 도커를 이해할려면 서점에서 첫장을 보면 자세히 나와있다. , 그리고 홈페이지에서 어떤게 장점인지 자세히 잘 나와 있다.
-
-8. 도커데스크탑을 킨후 깃배쉬를 킨다음에 docker ps 하면 구성이 나올것이다.
-  -. 
