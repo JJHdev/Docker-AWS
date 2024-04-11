@@ -54,6 +54,19 @@
       장소 한계 설정 등을 사용자가 직접 구성할 수 있게 해주며, 이를 통해 개인화된 컨테이너 이미지 저장소를 운영할 수 있다. 도커 리지스트리 소프트웨어는 오픈 소스이며, Docker Inc.에 의해 관리된다.
 
 
+5. 실습 (dockerfile은 도커의 설정을 작성한다.)
+  -. cd 로 작업할 폴더로 이동한다.
+  -. git clone https://github.com/docker/welcome-to-docker (에서 샘플로 사용해보자) 로 샘플 프로젝트와 dockerfile 설정을 받아보자.
+  -. cd welcom-to-docker (git에서 clone한 파일 경로 이동)
+  -. docker build -t welcome-to-docker . 로 이미지 빌드하기.
+  -. docker run --name apa02 -d -p 8080:80 httpd ("apa02"라는 이름을 가진 Apache HTTP Server 컨테이너를 데몬 모드로 실행하고, 호스트의 8080 포트를 컨테이너의 80 포트에 매핑하여 실행합니다.)
+  -. docker stop apa02
+  -. docker rm apa02
+  -. docker ps -a (있는 컨테이너 조회)
+  -. docker image ls (도커데몬에 어떤 이미지있는지 체크)
+  -. docker iamge rm 이미지명 (이미지 삭제)
+
+
 -------------------------- 수업중 들은 내용 -----------------------------
 1. Docker, AWS[ECS], gitHubAuction의 장점?? 선택한 이유??
   -. 
