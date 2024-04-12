@@ -66,10 +66,36 @@
       7. 적절한 태그 사용하기
             필요한 소프트웨어의 적절한 버전을 지정하여 불필요한 업데이트로 인한 크기 증가를 피한다.
 
+    4. 도커컴포즈 (여러컨테이너를 정의하고 실행하기 위한 도구다. YAML 파일을 사용하여 애플리케이션의 서비스, 네트워크, 불륨 구성(
+      -. Volumes : 저장공간으로 (데이터 조직화, 보안 및접근제어 , 백업 및 복구, 성능 최적화 기능) -> 데이터의 영구성, 데이터 공유 및 재사용, 데이터 백업 마이그레이션
 
-   4. 
+    5. Volume(볼륨) : 도커가 관리하는 데이터의 저장소 (볼륨을 사용하여 index.html 파일을 Nginx 컨테이너에 배치하는 방법
+      -. docker volume create my-nginx-volume
+      -. docker run --name my-nginx -v my-nginx-volume:/usr/share/nginx/html -p 8080:80 -d nginx
 
+    6. docker hub에 이미지 가져오기및 업로드
+      -. Nginx에서 이미지 끌어오기 (docker pull nginx)
+      -. 이미지에 새로운 태그 붙이기 (docker tag nginx:latest 도커아이디/nginx:태그명) >> docker tag nginx:latest jjhee/nginx:v1
+      -. Docker Hub 로그인하기 (docker login)
+      -. Docker hun에 이미지 올리기 (docker push 도커아이디/nginx:태그명)
 
+    7. network는 노드와 노드간의 커뮤니케이션으로 가상의 네트워크를 만들고 이 네트워크에 컨테이너를 소속시켜 컨테이너들을 연결한다.
+      -. 사용자 정의 네트워크 생성 (docker network create redmine-network)
+      -. MySQL 컨테이너 실행 (docker run --name some-mysql --network redmine-network -e MYSQL_ROOT_PASSWORD=mysecret-pw-e MYSQL_DATABASE=redmine -d mysql:8)
+      -. 레드마인 컨테이너 실행 (docker run --name some-redmine --network redmine-network -e REDMINE_DB_MYSQL=some-mysql -e REDMINE_DB_PASSWORD=my-secret-pw -p 3000:3000 -d redmine)
+
+    8. Docker network의 종류
+      8.1 브릿지 네트워크
+        -. 브릿지 네트워크가 가장 핵심이며, 나머지는 데브옵스의 영역이다.
+        -. 정의: 기본적으로, 각 도커 설치에는 하나의 브리지 네트워크가 존재하며, 컨테이너를 실행할 때 이 네트워크에 자동으로 연결된다. 사용자는 여러 개의 사용자 정의 브리지 네트워크를 생성하여 컨테이너를 논리적으로 분리할 수 있다
+        -. 사용 사례: 같은 브리지 네트워크에 속한 컨테이너끼리는 서로 통신할 수 있지만, 다른 브리지 네트워크에 속한 컨테이너와는 통신할 수 없다. 이를 통해 애플리케이션의 컴포넌트를 격리할 수 있다.
+        -. 브릿지 네트워크는 컨테이너가 생성될 때 자동으로 생성되는 기본 네트워크( bridge )와 사용자가 직접 생성할 수 있는 사용자 정의 브릿지 네트워크로 구분할 수 있다.
+        -. 기본 브릿지 네트워크를 사용하는 컨테이너는 -p 또는 --publish 옵션을 사용하여 호스트와 특정 포트를 연결하지 않는 이상 외부 네트워크와 직접 통신할 수 없다.
+        -. 사용자 정의 브릿지 네트워크는 docker network create 명령어를 사용하여 추가 브릿지 네트워크를 생성할 수 있다.
+        -. 브릿지 네트워크는 즉
+          -> 컨테이너 간 통식
+          -> 네트워크 격리
+          -> DNS 해석
 
 
 
